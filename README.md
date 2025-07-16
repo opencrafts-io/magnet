@@ -1,39 +1,128 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# 🎓 Magnet
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages). 
+**Magnet** is a Dart interface library that defines a standard contract for connecting to university or school portals. It powers backend integrations for the [Academia](https://github.com/opencrafts-io/academia.git) platform, enabling student-focused services such as course tracking, fee management, and profile updates across multiple institutions.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages). 
--->
+> Magnet provides a unified interface for implementing cross-school portal access in Dart or Flutter applications.
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+---
 
-## Features
+## ✨ Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- 🔐 Login and logout to/from school portals  
+- 👤 Fetch and update student profiles  
+- 📚 Retrieve and modify course schedules  
+- 💸 View financial transactions and fee statements  
+- 🔁 Reset passwords  
+- 🔌 Easily integrate with custom or institutional APIs
 
-## Getting started
+---
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+## 📦 Installation
 
-## Usage
+Add Magnet to your Dart or Flutter project via Git:
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
-```dart
-const like = 'sample';
+```yaml
+dependencies:
+  magnet:
+    git:
+      url: https://github.com/opencrafts-io/magnet.git
 ```
 
-## Additional information
+## Quick start
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+```dart
+final portal = ExampleUniversityPortal();
+
+final result = await portal.login(
+  Credentials(username: 'john.doe', password: 'mypassword123')
+);
+
+result.fold(
+  (failure) => print("Login failed: ${failure.message}"),
+  (success) => print("Login successful!"),
+);
+
+```
+
+## 🧩 Interface Overview
+Magnet exposes an abstract base class `MagnetPortalRepository` that defines all supported student actions.
+
+```dart
+abstract class MagnetPortalRepository {
+  String id; // e.g. ke.ac.daystar
+  String name; // e.g. Daystar University Portal
+  Uri schoolBaseUri;
+
+  Uri get schoolLogo;
+
+  Future<Either<MagnetFailure, bool>> login(Credentials creds);
+  Future<Either<MagnetFailure, bool>> logout();
+  Future<Either<MagnetFailure, bool>> isLoggedIn();
+
+  Future<Either<MagnetFailure, StudentProfile>> fetchStudentProfile();
+  Future<Either<MagnetFailure, CourseInfo>> fetchStudentSchedule();
+  Future<Either<MagnetFailure, FinancialTransaction>> fetchStudentFeeStatements();
+
+  Future<Either<MagnetFailure, bool>> resetPassword(String newPassword);
+  Future<Either<MagnetFailure, bool>> updateStudentProfile(StudentProfile updatedProfile);
+  Future<Either<MagnetFailure, bool>> updateStudentSchedule(CourseInfo courseUpdate);
+  Future<Either<MagnetFailure, bool>> dropCourse(String courseId);
+}
+```
+
+All methods return an `Either<MagnetFailure, T>` using `Dartz` for functional error handling
+
+## 🧱 Integration with Academia
+Magnet is designed to work seamlessly with Academia, a student hub for African universities.
+
+To add a new institution to Academia:
+
+    Create a new implementation of MagnetPortalRepository for the school.
+
+    Implement all the required methods using APIs, web scraping, or other means.
+
+    Register the repository with the backend or service locator.
+
+Example:
+
+
+```dart
+class DaystarPortal extends MagnetPortalRepository {
+  @override
+  Future<Either<MagnetFailure, StudentProfile>> fetchStudentProfile() {
+    // Call the actual portal
+  }
+
+  // Implement other methods...
+}
+
+```
+
+
+---
+
+## Testing
+
+You can use fake or mock implementations to write unit tests.
+
+```dart
+class FakePortal extends MagnetPortalRepository {
+  @override
+  Future<Either<MagnetFailure, bool>> login(Credentials creds) async {
+    return right(true); // Always succeeds
+  }
+}
+
+```
+
+## 🤝 Contributing to Magnet
+
+1. Fork the repo
+2. Add or improve portal integrations
+3. Include tests and documentation
+4. Submit a pull request
+
+
+## 🔗 Related Projects
+[Academia Platform](https://github.com/opencrafts-io/academia.git) — Open source student hub
+[Dartz](https://pub.dev/packages/dartz) — Functional programming for Dart
