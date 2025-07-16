@@ -4,5 +4,3 @@
 library;
 
 export 'src/magnet_base.dart';
-
-// TODO: Export any libraries intended for clients of this package.

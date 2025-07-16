@@ -1,6 +1,7 @@
-// TODO: Put public facing types in this file.
+export 'errors/magnet_errors.dart';
+export 'exceptions/magnet_school_portal_exceptions.dart';
+export 'interfaces/magnet_portal_repository.dart';
+export 'model/course_info.dart';
+export 'model/credentials.dart';
+export 'model/student_profile.dart';
 
-/// Checks if you are awesome. Spoiler: you are.
-class Awesome {
-  bool get isAwesome => true;
-}
