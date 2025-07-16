@@ -1,6 +1,7 @@
-# 🎓 Magnet
+# 🧲 Magnet
+ ---
 
-**Magnet** is a Dart interface library that defines a standard contract for connecting to university or school portals. It powers backend integrations for the [Academia](https://github.com/opencrafts-io/academia.git) platform, enabling student-focused services such as course tracking, fee management, and profile updates across multiple institutions.
+**Magnet** is a Dart interface library that defines a standard contract for connecting to university or school portals. It powers in app integrations for the [Academia](https://github.com/opencrafts-io/academia.git) platform, enabling student-focused services such as course tracking, fee management, and profile updates across multiple institutions.
 
 > Magnet provides a unified interface for implementing cross-school portal access in Dart or Flutter applications.
 
@@ -124,5 +125,7 @@ class FakePortal extends MagnetPortalRepository {
 
 
 ## 🔗 Related Projects
+
 [Academia Platform](https://github.com/opencrafts-io/academia.git) — Open source student hub
+
 [Dartz](https://pub.dev/packages/dartz) — Functional programming for Dart
