@@ -4,4 +4,5 @@ export 'interfaces/magnet_portal_repository.dart';
 export 'model/course_info.dart';
 export 'model/credentials.dart';
 export 'model/student_profile.dart';
+export 'model/financial_transaction.dart';
 
