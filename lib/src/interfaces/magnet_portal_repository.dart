@@ -59,7 +59,7 @@ abstract class MagnetPortalRepository {
   /// Fetches the student's course schedule.
   ///
   /// Returns an [Either<MagnetFailure, CourseInfo>] containing the student's schedule.
-  Future<Either<MagnetFailure, CourseInfo>> fetchStudentSchedule();
+  Future<Either<MagnetFailure, List<CourseInfo>>> fetchStudentTimetable();
 
   /// Fetches the student's financial transaction information such as fee statements.
   ///
