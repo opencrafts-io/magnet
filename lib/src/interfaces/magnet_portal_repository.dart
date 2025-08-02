@@ -23,13 +23,13 @@ abstract class MagnetPortalRepository {
 
   /// The identifier for the school portal commonly denoted by the reverse
   /// of the school's URL, for example: ke.ac.example_university.
-  String id;
+  final String id;
 
   /// Human-readable name of the portal, for example: 'University of Example Student Portal'.
-  String name;
+  final String name;
 
   /// The base URI for the school portal, such as: https://portal.example.ac.ke.
-  Uri schoolBaseUri;
+  final Uri schoolBaseUri;
 
   /// A getter for the URL link to the school's logo.
   /// It is expected to return a [Uri] to the school's logo image.
@@ -71,7 +71,7 @@ abstract class MagnetPortalRepository {
   ///
   /// - [email]: The student's email used for account recovery.
   /// Returns an [Either<MagnetFailure, bool>] indicating success or failure of the password reset.
-  Future<Either<MagnetFailure, bool>> resetPassword(String newPassord);
+  Future<Either<MagnetFailure, bool>> resetPassword({String? newPassword});
 
   /// Updates student's personal information (e.g., contact details, profile).
   ///
