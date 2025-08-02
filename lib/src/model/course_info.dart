@@ -14,9 +14,6 @@ part 'course_info.g.dart';
 abstract class CourseInfo with _$CourseInfo {
   const CourseInfo._();
 
-  // Custom validation annotations using the @Assert decorator
-  @Assert('courseCode.isNotEmpty', 'courseCode cannot be empty')
-  @Assert('courseTitle.isNotEmpty', 'courseTitle cannot be empty')
   /// The constructor for creating a [CourseInfo] instance.
   const factory CourseInfo({
     /// The unique identifier for the course (e.g., CS101).

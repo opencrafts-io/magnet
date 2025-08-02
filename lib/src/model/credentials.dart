@@ -12,9 +12,6 @@ part 'credentials.g.dart';
 abstract class Credentials with _$Credentials {
   const Credentials._();
 
-  // Custom validation annotations using the @Assert decorator
-  @Assert('username.isNotEmpty', 'Username cannot be empty')
-  @Assert('password.isNotEmpty', 'Password cannot be empty')
   /// The constructor for creating a [Credentials] instance.
   const factory Credentials({
     /// The username for the user (e.g., "student123").

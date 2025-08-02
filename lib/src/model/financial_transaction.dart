@@ -15,8 +15,6 @@ part 'financial_transaction.g.dart';
 abstract class FinancialTransaction with _$FinancialTransaction {
   const FinancialTransaction._();
 
-  // Custom validation annotations using the @Assert decorator
-  @Assert('transactionId.isNotEmpty', 'transactionId cannot be empty')
   /// The constructor for creating a [FinancialTransaction] instance.
   const factory FinancialTransaction({
     /// The unique identifier for the transaction (e.g., "TX12345").

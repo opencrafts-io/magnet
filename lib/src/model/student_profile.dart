@@ -9,10 +9,6 @@ part 'student_profile.g.dart';
 /// name, email, school etc..
 abstract class StudentProfile with _$StudentProfile {
   const StudentProfile._();
-  @Assert('admissionNumber.isNotEmpty', 'admissionNumber cannot be empty')
-  @Assert('firstName.isNotEmpty', 'firstName cannot be empty')
-  @Assert('otherNames.isNotEmpty', 'otherNames cannot be empty')
-  @Assert('school.isNotEmpty', 'school cannot be empty')
   const factory StudentProfile({
     /// The student's admission number
     // ignore: invalid_annotation_target

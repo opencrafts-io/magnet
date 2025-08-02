@@ -246,7 +246,7 @@ return $default(_that.courseCode,_that.courseTitle,_that.courseDescription,_that
 @JsonSerializable()
 
 class _CourseInfo extends CourseInfo {
-  const _CourseInfo({@JsonKey(name: "course_code") required this.courseCode, @JsonKey(name: "course_title") required this.courseTitle, @JsonKey(name: "course_description") this.courseDescription, required this.credits, this.instructor, this.semester, this.schedule, this.duration, final  List<String>? prerequisites, this.courseType, @JsonKey(name: "course_level") this.courseLevel, this.location, @JsonKey(name: "enrollment_limit") this.enrollmentLimit, @JsonKey(name: "current_enrollment") this.currentEnrollment, @JsonKey(name: "course_materials") final  List<String>? courseMaterials}): assert(courseCode.isNotEmpty, 'courseCode cannot be empty'),assert(courseTitle.isNotEmpty, 'courseTitle cannot be empty'),_prerequisites = prerequisites,_courseMaterials = courseMaterials,super._();
+  const _CourseInfo({@JsonKey(name: "course_code") required this.courseCode, @JsonKey(name: "course_title") required this.courseTitle, @JsonKey(name: "course_description") this.courseDescription, required this.credits, this.instructor, this.semester, this.schedule, this.duration, final  List<String>? prerequisites, this.courseType, @JsonKey(name: "course_level") this.courseLevel, this.location, @JsonKey(name: "enrollment_limit") this.enrollmentLimit, @JsonKey(name: "current_enrollment") this.currentEnrollment, @JsonKey(name: "course_materials") final  List<String>? courseMaterials}): _prerequisites = prerequisites,_courseMaterials = courseMaterials,super._();
   factory _CourseInfo.fromJson(Map<String, dynamic> json) => _$CourseInfoFromJson(json);
 
 /// The unique identifier for the course (e.g., CS101).

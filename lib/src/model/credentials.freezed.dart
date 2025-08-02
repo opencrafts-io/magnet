@@ -218,7 +218,7 @@ return $default(_that.username,_that.password,_that.extra);case _:
 @JsonSerializable()
 
 class _Credentials extends Credentials {
-  const _Credentials({@JsonKey(name: "username") required this.username, @JsonKey(name: "password") required this.password, @JsonKey(name: "extra") final  Map<String, dynamic>? extra}): assert(username.isNotEmpty, 'Username cannot be empty'),assert(password.isNotEmpty, 'Password cannot be empty'),_extra = extra,super._();
+  const _Credentials({@JsonKey(name: "username") required this.username, @JsonKey(name: "password") required this.password, @JsonKey(name: "extra") final  Map<String, dynamic>? extra}): _extra = extra,super._();
   factory _Credentials.fromJson(Map<String, dynamic> json) => _$CredentialsFromJson(json);
 
 /// The username for the user (e.g., "student123").
