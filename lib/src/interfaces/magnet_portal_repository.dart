@@ -65,7 +65,7 @@ abstract class MagnetPortalRepository {
   ///
   /// Returns an [Either<MagnetFailure, FinancialTransaction>] containing the student's fee statements.
   Future<Either<MagnetFailure, List<FinancialTransaction>>>
-  fetchStudentFeeStatements(StudentProfile studentInfo);
+  fetchStudentFeeStatements();
 
   /// Resets the student's password.
   ///
